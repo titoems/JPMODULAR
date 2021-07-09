@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteRule ^([-a-zA-Z0-9]+)$ view.php?module=$1 
+
+#   Producto
+#   Entrada: editar/NOMBRE_PRODUCTO/
+#   Salida: usuarios_edit.php?id=NOMBRE_PRODUCTO
+# 	RewriteRule ^usuario(.*)$  usuarios.php?id_personal=$1 [L]
+
+RewriteRule ^personal/([-a-zA-Z0-9]+)$ view.php?module=personal&id_personal=$1
+RewriteRule ^imprimir/([-a-zA-Z0-9]+)$ view.php?module=imprimir&id_personal=$1
+RewriteRule ^orden-servicio/([-a-zA-Z0-9]+)$ view.php?module=orden-servicio&id=$1
+RewriteRule ^anexos/([-a-zA-Z0-9]+)$ view.php?module=anexos&id=$1
+RewriteRule ^editar-o-servicio/([-a-zA-Z0-9]+)$ view.php?module=editaros&id_orden_servicio=$1

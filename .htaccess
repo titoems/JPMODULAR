@@ -1,0 +1,3 @@
+RewriteEngine On
+ErrorDocument 404 /404.html
+RewriteRule ^([-a-zA-Z0-9]+)$ index.php?pagina=$1
