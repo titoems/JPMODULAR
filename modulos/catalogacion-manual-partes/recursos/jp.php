@@ -1,3 +1,10 @@
+<?php
+require_once "../include/database.php";
+$tipos = $mysqli->query("SELECT DISTINCT tipo FROM equipos");
+$marcas = $mysqli->query("SELECT DISTINCT marca FROM equipos");
+$clientes = $mysqli->query("SELECT DISTINCT cliente FROM equipos");
+$ubicaciones = $mysqli->query("SELECT DISTINCT lugar FROM equipos");
+?>
 <div class="main-container">
     <div class="main-container-flex">
         <div class="flex-column-div" style="border:1px solid blue;">
@@ -19,7 +26,11 @@
             <label for="inputState">Tipo:</label>
               <select id="inputState" class="form-control">
                 <option selected></option>
-                <option>...</option>
+                <?php
+                while ($valores = mysqli_fetch_array($tipos)){
+                  echo '<option value="'.$valores[tipo].'">'.$valores[tipo].'</option>';
+                }
+                ?>
               </select>
             </div>
 
@@ -29,7 +40,11 @@
             <label for="inputState">Marca:</label>
               <select type= "text" id="inputState" class="form-control">
                 <option selected></option>
-                <option>...</option>
+                <?php
+                while ($valores = mysqli_fetch_array($marcas)){
+                  echo '<option value="'.$valores[marca].'">'.$valores[marca].'</option>';
+                }
+                ?>
               </select>
             </div>
 
@@ -37,7 +52,11 @@
             <label for="inputState">Cliente:</label>
               <select id="inputState" class="form-control">
                 <option selected></option>
-                <option>...</option>
+                <?php
+                while ($valores = mysqli_fetch_array($clientes)){
+                  echo '<option value="'.$valores[cliente].'">'.$valores[cliente].'</option>';
+                }
+                ?>
               </select>
             </div>
 
@@ -45,7 +64,6 @@
             <label for="inputState">Ubicacion:</label>
               <select id="inputState" class="form-control">
                 <option selected></option>
-                <option>...</option>
               </select>
             </div>
 <br>
@@ -77,7 +95,13 @@
         </div>
         <div class="flex-column-div" style="border:1px solid orange;">
 
-            <p>Segunda columna</p>
+            <?php
+            $interacciones = '<img src="https://www.sdlgla.com/wp-content/uploads/2018/03/img_paginaproduto_01.jpg" usemap="#image-map">
+                          <map name="image-map">
+                              <area target="" alt="Cabina" title="Cabina" href="C:\Users\Public\Pictures\JPMODULAR\retroexcabadoracabina.jpg" coords="331,168,328,188,334,197,334,224,318,260,314,293,308,319,322,308,359,305,391,305,421,313,442,335,461,358,476,370,512,368,514,317,513,285,534,279,547,267,526,217,519,187,486,168" shape="poly">
+                          </map>';
+            echo $interacciones;
+            ?>
             
         </div>
         <div class="flex-column-div" style="border:1px solid purple;">
