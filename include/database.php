@@ -19,7 +19,7 @@ if ($mysqli->connect_error) {
 $server_dos   = "127.0.0.1";
 $username_dos = "root";
 $password_dos = "";
-$database_dos = "jpingenieria";
+$database_dos = "planificacion_abril";
 
 
 $mysqli_dos = new mysqli($server_dos, $username_dos, $password_dos, $database_dos);

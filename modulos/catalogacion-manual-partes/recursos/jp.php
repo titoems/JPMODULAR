@@ -1,3 +1,10 @@
+<?php
+require_once "../include/database.php";
+$tipos = $mysqli->query("SELECT DISTINCT tipo FROM equipos");
+$marcas = $mysqli->query("SELECT DISTINCT marca FROM equipos");
+$clientes = $mysqli->query("SELECT DISTINCT cliente FROM equipos");
+$ubicaciones = $mysqli->query("SELECT DISTINCT ubicacion FROM equipos");
+?>
 <div class="main-container">
     <div class="main-container-flex">
         <div class="flex-column-div" style="border:1px solid blue;">
@@ -19,7 +26,11 @@
             <label for="inputState">Tipo:</label>
               <select id="inputState" class="form-control">
                 <option selected></option>
-                <option>...</option>
+                <?php
+                while ($valores = mysqli_fetch_array($tipos)){
+                  echo '<option value="'.$valores[tipo].'">'.$valores[tipo].'</option>';
+                }
+                ?>
               </select>
             </div>
 
@@ -29,7 +40,11 @@
             <label for="inputState">Marca:</label>
               <select type= "text" id="inputState" class="form-control">
                 <option selected></option>
-                <option>...</option>
+                <?php
+                while ($valores = mysqli_fetch_array($marcas)){
+                  echo '<option value="'.$valores[marca].'">'.$valores[marca].'</option>';
+                }
+                ?>
               </select>
             </div>
 
@@ -37,7 +52,11 @@
             <label for="inputState">Cliente:</label>
               <select id="inputState" class="form-control">
                 <option selected></option>
-                <option>...</option>
+                <?php
+                while ($valores = mysqli_fetch_array($clientes)){
+                  echo '<option value="'.$valores[cliente].'">'.$valores[cliente].'</option>';
+                }
+                ?>
               </select>
             </div>
 
@@ -45,7 +64,11 @@
             <label for="inputState">Ubicacion:</label>
               <select id="inputState" class="form-control">
                 <option selected></option>
-                <option>...</option>
+                <?php
+                while ($valores = mysqli_fetch_array($ubicaciones)){
+                  echo '<option value="'.$valores[ubicacion].'">'.$valores[ubicacion].'</option>';
+                }
+                ?>
               </select>
             </div>
 <br>
