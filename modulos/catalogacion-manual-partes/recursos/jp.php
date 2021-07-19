@@ -7,30 +7,78 @@
         
             <p>INFORMACION</p>
 
-            <div class="input-group">
-              <div class="form-outline">
-                <input type="Codigo:" id="form1" class="form-control" />
-                <label class="form-label" for="form1">Search</label>
-              </div>
-              <button type="button" class="btn btn-primary">
-                <i class="fas fa-search"></i>
-              </button>
+            <nav class="navbar navbar-light bg-light">
+              <form class="form-inline">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+              </form>
+            </nav>
+
+
+            <div class="form-group col-md-6">
+            <label for="inputState">Tipo:</label>
+              <select id="inputState" class="form-control">
+                <option selected></option>
+                <option>...</option>
+              </select>
             </div>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos enim eveniet, porro laudantium aut cumque alias repellendus! Deserunt id ad at dicta, a error, sapiente omnis, voluptates impedit recusandae fugiat.</p>
-            <p>Primera Columna</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos enim eveniet, porro laudantium aut cumque alias repellendus! Deserunt id ad at dicta, a error, sapiente omnis, voluptates impedit recusandae fugiat.</p> <p>Primera Columna</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos enim eveniet, porro laudantium aut cumque alias repellendus! Deserunt id ad at dicta, a error, sapiente omnis, voluptates impedit recusandae fugiat.</p> <p>Primera Columna</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos enim eveniet, porro laudantium aut cumque alias repellendus! Deserunt id ad at dicta, a error, sapiente omnis, voluptates impedit recusandae fugiat.</p> <p>Primera Columna</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos enim eveniet, porro laudantium aut cumque alias repellendus! Deserunt id ad at dicta, a error, sapiente omnis, voluptates impedit recusandae fugiat.</p> <p>Primera Columna</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos enim eveniet, porro laudantium aut cumque alias repellendus! Deserunt id ad at dicta, a error, sapiente omnis, voluptates impedit recusandae fugiat.</p> <p>Primera Columna</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos enim eveniet, porro laudantium aut cumque alias repellendus! Deserunt id ad at dicta, a error, sapiente omnis, voluptates impedit recusandae fugiat.</p> <p>Primera Columna</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos enim eveniet, porro laudantium aut cumque alias repellendus! Deserunt id ad at dicta, a error, sapiente omnis, voluptates impedit recusandae fugiat.</p>
+
+
+        
+            <div class="form-group col-md-6">
+            <label for="inputState">Marca:</label>
+              <select type= "text" id="inputState" class="form-control">
+                <option selected></option>
+                <option>...</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-6">
+            <label for="inputState">Cliente:</label>
+              <select id="inputState" class="form-control">
+                <option selected></option>
+                <option>...</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-6">
+            <label for="inputState">Ubicacion:</label>
+              <select id="inputState" class="form-control">
+                <option selected></option>
+                <option>...</option>
+              </select>
+            </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+            <div class="flex-column-div1" style="border:1px solid orange;">
+            <br>
+
+            <p>Item one</p>
+            <p>Item two</p>
+            <p>Item Three</p>
+            <p>Item one</p>
+            <p>Item two</p>
+            <p>Item Three</p>
+            <p>Item one</p>
+            <p>Item two</p>
+            <p>Item Three</p>
+            <p>Item one</p>
+            <p>Item two</p>
+            <p>Item Three</p>
+            
+            </div>
         </div>
         <div class="flex-column-div" style="border:1px solid orange;">
+
             <p>Segunda columna</p>
-            <?php
-                
-            ?>
+            
         </div>
         <div class="flex-column-div" style="border:1px solid purple;">
             <p>Tercera columna</p>
@@ -38,6 +86,7 @@
     </div>
 </div>
 <style>
+
 .main-container{
     margin-left:50px;
     margin-right:10px;
@@ -50,3 +99,11 @@
 .flex-column-div{
     width:610px;
 }
+.flex-column-div1{
+    margin-left:30px;
+    margin-right:50px;
+    width:500px;
+}
+
+
+</style>
