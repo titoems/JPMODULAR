@@ -38,7 +38,6 @@ include $contenido;
 include "../include/footer.php";
 include "../include/".$footer_contenido;
 ?>
-
   
   
 <script type="text/javascript">

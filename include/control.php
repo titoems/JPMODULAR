@@ -89,6 +89,24 @@ switch ($valor) {
 		$footer_contenido = 'contenido_footer.php';
 		$contenido = "../main/pdf-os.php";
 	break;
+	case 'lista-equipos':
+		$direccion = '../';
+		$update = 'upload.php';
+		$menu = '';
+		$action04 = 'active';
+		$head = 'head.php';
+		$footer_contenido = 'contenido_footer.php';
+		$contenido = "../modulos/catalogacion-manual-partes/recursos/jp.php";
+	break;
+	case 'modulo-interactivo':
+		$direccion = '../';
+		$update = 'upload.php';
+		$menu = '';
+		$action04 = 'active';
+		$head = 'head.php';
+		$footer_contenido = 'contenido_footer.php';
+		$contenido = "../main/pdf-os.php";
+	break;
 	case 'anexos':
 		$direccion = '../../';
 		$update = '../upload.php';
