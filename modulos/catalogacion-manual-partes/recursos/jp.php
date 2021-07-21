@@ -3,7 +3,7 @@ require_once "../include/database.php";
 $codigo_equipo = $mysqli->query("SELECT DISTINCT codigo_equipo FROM equipos");
 $marcas = $mysqli->query("SELECT DISTINCT marca FROM equipos");
 $clientes = $mysqli->query("SELECT DISTINCT cliente FROM equipos");
-$ubicaciones = $mysqli->query("SELECT DISTINCT lugar FROM equipos");
+$modelo = $mysqli->query("SELECT DISTINCT modelo FROM equipos");
 ?>
 <div class="main-container">
     <div class="main-container-flex">
@@ -61,12 +61,12 @@ $ubicaciones = $mysqli->query("SELECT DISTINCT lugar FROM equipos");
             </div>
 
             <div class="form-group col-md-6">
-            <label for="inputState">Ubicacion:</label>
+            <label for="inputState">Modelo:</label>
               <select id="inputState" class="form-control">
                 <option selected></option>
                 <?php
-                while ($valores = mysqli_fetch_array($ubicaciones)){
-                  echo '<option value="'.$valores[ubicacion].'">'.$valores[ubicacion].'</option>';
+                while ($valores = mysqli_fetch_array($modelo)){
+                  echo '<option value="'.$valores[modelo].'">'.$valores[modelo].'</option>';
                 }
                 ?>
               </select>
