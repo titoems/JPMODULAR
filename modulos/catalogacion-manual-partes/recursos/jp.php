@@ -1,9 +1,9 @@
 <?php
 require_once "../include/database.php";
-$tipos = $mysqli->query("SELECT DISTINCT tipo FROM equipos");
+$codigo_equipo = $mysqli->query("SELECT DISTINCT codigo_equipo FROM equipos");
 $marcas = $mysqli->query("SELECT DISTINCT marca FROM equipos");
 $clientes = $mysqli->query("SELECT DISTINCT cliente FROM equipos");
-$ubicaciones = $mysqli->query("SELECT DISTINCT ubicacion FROM equipos");
+$ubicaciones = $mysqli->query("SELECT DISTINCT lugar FROM equipos");
 ?>
 <div class="main-container">
     <div class="main-container-flex">
@@ -23,12 +23,12 @@ $ubicaciones = $mysqli->query("SELECT DISTINCT ubicacion FROM equipos");
 
 
             <div class="form-group col-md-6">
-            <label for="inputState">Tipo:</label>
+            <label for="inputState">Codigo:</label>
               <select id="inputState" class="form-control">
                 <option selected></option>
                 <?php
-                while ($valores = mysqli_fetch_array($tipos)){
-                  echo '<option value="'.$valores[tipo].'">'.$valores[tipo].'</option>';
+                while ($valores = mysqli_fetch_array($codigo_equipo)){
+                  echo '<option value="'.$valores[codigo_equipo].'">'.$valores[codigo_equipo].'</option>';
                 }
                 ?>
               </select>
@@ -100,7 +100,13 @@ $ubicaciones = $mysqli->query("SELECT DISTINCT ubicacion FROM equipos");
         </div>
         <div class="flex-column-div" style="border:1px solid orange;">
 
-            <p>Segunda columna</p>
+            <?php
+            $interacciones = '<img src="https://www.sdlgla.com/wp-content/uploads/2018/03/img_paginaproduto_01.jpg" usemap="#image-map">
+                          <map name="image-map">
+                              <area target="" alt="Cabina" title="Cabina" href="C:\Users\Public\Pictures\JPMODULAR\retroexcabadoracabina.jpg" coords="331,168,328,188,334,197,334,224,318,260,314,293,308,319,322,308,359,305,391,305,421,313,442,335,461,358,476,370,512,368,514,317,513,285,534,279,547,267,526,217,519,187,486,168" shape="poly">
+                          </map>';
+            echo $interacciones;
+            ?>
             
         </div>
         <div class="flex-column-div" style="border:1px solid purple;">
