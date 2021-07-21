@@ -93,7 +93,7 @@ switch ($valor) {
 		$direccion = '../';
 		$update = 'upload.php';
 		$menu = '';
-		$action04 = 'active';
+		$action05 = 'active';
 		$head = 'head.php';
 		$footer_contenido = 'contenido_footer.php';
 		$contenido = "../modulos/catalogacion-manual-partes/recursos/jp.php";
@@ -102,7 +102,7 @@ switch ($valor) {
 		$direccion = '../';
 		$update = 'upload.php';
 		$menu = '';
-		$action04 = 'active';
+		$action06 = 'active';
 		$head = 'head.php';
 		$footer_contenido = 'contenido_footer.php';
 		$contenido = "../main/pdf-os.php";

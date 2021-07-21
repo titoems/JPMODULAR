@@ -73,14 +73,14 @@ if ($_SESSION['id_tipo_usuario'] == 5 || $_SESSION['id_tipo_usuario'] == 9 ) {
 
         <li class="treeview <?= $action01 ?>">
           <a href="#">
-            <i class="fa fa-edit"></i> <span>Catalogacion</span>
+            <i class="fa fa-cubes"></i> <span>Catalogacion</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li class="<?= $action05 ?>"><a href="<?= $menu ?>lista-equipos"><i class="fa fa-list"></i>Lista de Equipos</a></li>
-            <li class="<?= $action06 ?>"><a href="<?= $menu ?>modulo-interactivo"><i class="fa fa-file-excel-o"></i>Modulo interactivo</a></li>
+            <li class="<?= $action06 ?>"><a href="<?= $menu ?>modulo-interactivo"><i class="fa fa-crop"></i>Modulo interactivo</a></li>
             
           </ul>
         </li>
