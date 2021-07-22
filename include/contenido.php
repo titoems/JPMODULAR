@@ -44,5 +44,6 @@
       </div>
       <!-- /.box -->
     </section>
+    
     <!-- /.content -->
   </div>
