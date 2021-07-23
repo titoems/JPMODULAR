@@ -17,14 +17,14 @@ switch ($valor) {
 		$contenido = "../include/contenido.php";
 	break;
 	default:
-	case 'editar-o-servicio':
+	case 'lista-equipo':
 		$direccion = '../../';
 		$update = '../upload.php';
 		$menu = '../';
 		$action02 = 'active';
 		$head = 'form_head.php';
 		$footer_contenido = 'form_footer.php';
-		$contenido = "../main/editaros.php";
+		$contenido = "../modulos/catalogacion-manual-partes/recursos/jp.php";
 	break;
 	case 'nueva-orden-servicio':
 		$direccion = '../';

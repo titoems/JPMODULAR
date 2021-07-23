@@ -11,3 +11,5 @@ RewriteRule ^imprimir/([-a-zA-Z0-9]+)$ view.php?module=imprimir&id_personal=$1
 RewriteRule ^orden-servicio/([-a-zA-Z0-9]+)$ view.php?module=orden-servicio&id=$1
 RewriteRule ^anexos/([-a-zA-Z0-9]+)$ view.php?module=anexos&id=$1
 RewriteRule ^editar-o-servicio/([-a-zA-Z0-9]+)$ view.php?module=editaros&id_orden_servicio=$1
+RewriteRule ^lista-equipo/([-a-zA-Z0-9]+)$ view.php?module=jp&modelo=$1 [L]
+RewriteRule ^lista-equipos/ view.php?module=jp

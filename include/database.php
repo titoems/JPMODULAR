@@ -1,8 +1,8 @@
 <?php
 
-$server   = "127.0.0.1:3307";
+$server   = "127.0.0.1";
 $username = "root";
-$password = "";
+$password = "tecsup";
 $database = "planificacion_abril";
 
 
@@ -16,9 +16,9 @@ if ($mysqli->connect_error) {
 
 // segunda coneccion con el servidor 
 
-$server_dos   = "127.0.0.1:3307";
+$server_dos   = "127.0.0.1";
 $username_dos = "root";
-$password_dos = "";
+$password_dos = "tecsup";
 $database_dos = "jpingenieria";
 
 
