@@ -130,13 +130,24 @@
         </div>
       </div>
 
+      <h6>Partes de Equipo</h6>
+      <div class="flex-column-div1">
+        <div class="box-body">
+          <div id="partes_equipo_div" class="dataTables_wrapper form-inline dt-bootstrap">
+            
+          </div>
+        </div>
+      </div>
+
     </div>
 
 
 
 
     <!-- Mostrado de Archivos Dinamicos -->
-    <div id="divImg" >
+    <div class='container' >
+      <div id="divImg"></div>
+      <div id="divMapps"></div>
 
       <?php
       /* $interacciones = '<img src="https://www.sdlgla.com/wp-content/uploads/2018/03/img_paginaproduto_01.jpg" usemap="#image-map">
