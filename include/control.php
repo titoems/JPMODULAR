@@ -105,7 +105,7 @@ switch ($valor) {
 		$action06 = 'active';
 		$head = 'head.php';
 		$footer_contenido = 'contenido_footer.php';
-		$contenido = "../main/pdf-os.php";
+		$contenido = "../modulos/catalogacion-manual-partes/recursos/interactivo.php";
 	break;
 	case 'anexos':
 		$direccion = '../../';
