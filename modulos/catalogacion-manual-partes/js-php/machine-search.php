@@ -4,7 +4,7 @@
     $search = $_POST['search'];
 
     if(!empty($search)) {
-        $result = $mysqli->query("SELECT DISTINCT nombre, estado, lugar, modelo, marca, cliente FROM equipos WHERE modelo LIKE '$search%' ORDER BY modelo LIMIT 100");
+        $result = $mysqli->query("SELECT DISTINCT codigo_equipo, estado, lugar, modelo, marca, cliente FROM equipos WHERE modelo LIKE '$search%' ORDER BY modelo LIMIT 100");
         if(!$result) {
             die('Query Error '. mysqli_error($mysqli));
         }
@@ -13,7 +13,7 @@
         $json = array();
         while($row = mysqli_fetch_array($result)) {
             $json[] = array(
-                'nombre' => $row['nombre'],
+                'nombre' => $row['codigo_equipo'],
                 'estado' => $row['estado'],
                 'lugar' => $row['lugar'],
                 'modelo' => $row['modelo'],
