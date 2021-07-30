@@ -112,6 +112,10 @@
                     </tr>
                   </thead>
                   <tbody id="tableArchivos">
+                    <tr role="row" class="odd">
+                        <td>No archivos</td>
+                        <td>Ningun tipo</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -121,11 +125,11 @@
       </div>
 
 
-      <h6>Detalles de Equipo</h6>
+      <h6>Detalles de Equipos</h6>
       <div class="flex-column-div1">
         <div class="box-body">
-          <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-            
+          <div id="detallesWraper" class="dataTables_wrapper form-inline dt-bootstrap">
+          Ningun Elemento Seleccionado
           </div>
         </div>
       </div>
@@ -134,7 +138,7 @@
       <div class="flex-column-div1">
         <div class="box-body">
           <div id="partes_equipo_div" class="dataTables_wrapper form-inline dt-bootstrap">
-            
+          Ningun Elemento Seleccionado
           </div>
         </div>
       </div>
@@ -146,7 +150,7 @@
 
     <!-- Mostrado de Archivos Dinamicos -->
     <div class='container' >
-      <div id="divImg"></div>
+      <div id="divImg">Ningun Elemento Seleccionado</div>
       <div id="divMapps"></div>
 
       <?php
