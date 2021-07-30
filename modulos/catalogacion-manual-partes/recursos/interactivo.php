@@ -62,3 +62,16 @@
       </div>
    </div>
 </div>
+<script src="<?= $direccion ?>js/vendor/jquery-1.11.3.min.js"></script>
+<script>
+   $(document).ready(function() {
+      $('img').click(function(e) {
+         var offset = $(this).offset();
+
+         console.log((e.pageX-offset.left)+"   "+(e.pageY-offset.top));
+
+/*          alert(e.pageX - offset.left);
+         alert(e.pageY - offset.top); */
+      });
+   });
+</script>
