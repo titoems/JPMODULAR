@@ -36,7 +36,7 @@ $(document).ready(function () {
             fillClientes();
             fillModelos();
         }
-    })
+    });
 
     
 
@@ -229,19 +229,10 @@ function buscaDetalles(busqueda) {
           
             let detalles = JSON.parse(resdata);
             let template = '';
-            let templateMapArea = '';
             let templateImagen = '';
             let templateDetalles = '';
             let temporal = '';
             
-            detalles.forEach(detalle => {
-                temporal = detalle.coordenadas;
-                if (templateMapArea.indexOf(temporal) == -1) {
-                    templateMapArea += `
-                        <area target="" alt="${detalle.titulo}" title="${detalle.titulo}" href="${detalle.href_link}" coords="${detalle.coordenadas}" shape="${detalle.shape}">
-                    `;
-                }
-            })
 
             detalles.forEach(detalle => {
 
@@ -255,14 +246,9 @@ function buscaDetalles(busqueda) {
                     `;
                 }
 
-                temporal = detalle.archivo;
+                temporal = detalle.mapImg;
                 if (templateImagen.indexOf(temporal) == -1) {
-                    templateImagen += `
-                    <img src="http://localhost/JPMODULAR/dist/img/equipos/${detalle.archivo}" usemap="#${detalle.usemap}">
-                    <map name="${detalle.usemap}">
-                        ${templateMapArea}
-                    </map>
-                    `;
+                    templateImagen += `${detalle.mapImg}`;
                 }
 
                 temporal = detalle.nombre;

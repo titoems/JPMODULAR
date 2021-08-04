@@ -3,7 +3,7 @@
 
     $search = $_POST['search'];
     if(!empty($search)) {
-        $result = $mysqli->query("SELECT e.codigo_equipo, e.estado, e.presion_alta, e.presion_baja, e.frecuencia, e.capacidad, e.refrigerante, e.tipo, e.numero_serie, e.voltaje, e.amperaje, e.tipo_equipo, f.archivo, m.titulo, m.usemap, m.href_link, m.coordenadas, m.shape, t.nombre, e.observacion_calefaccion  FROM equipos e, files_upload f, tipo_files t, mapeo_files m WHERE e.modelo LIKE '$search%' AND f.id_categoria LIKE '$search%' AND t.id_tipo_files LIKE f.id_subfile AND f.id_files_upload LIKE m.codigo_archivo ORDER BY e.modelo");
+        $result = $mysqli->query("SELECT e.codigo_equipo, e.estado, e.presion_alta, e.presion_baja, e.frecuencia, e.capacidad, e.refrigerante, e.tipo, e.numero_serie, e.voltaje, e.amperaje, e.tipo_equipo, f.archivo, f.mapImg, t.nombre, e.observacion_calefaccion  FROM equipos e, files_upload f, tipo_files t WHERE e.modelo LIKE '$search%' AND f.id_categoria LIKE '$search%' AND t.id_tipo_files LIKE f.id_subfile ORDER BY e.modelo");
         if(!$result) {
             die('Query Error '. mysqli_error($mysqli));
         }        
@@ -24,11 +24,7 @@
                 'amperaje' => $row['amperaje'],
                 'tipoEquipo' => $row['tipo_equipo'],
                 'archivo' => $row['archivo'],
-                'titulo' => $row['titulo'],
-                'usemap' => $row['usemap'],
-                'href_link' => $row['href_link'],
-                'coordenadas' => $row['coordenadas'],
-                'shape' => $row['shape'],
+                'mapImg' => $row['mapImg'],
                 'tipoArchivo' => $row['nombre'],
                 'observacion' => $row['observacion_calefaccion']
             );

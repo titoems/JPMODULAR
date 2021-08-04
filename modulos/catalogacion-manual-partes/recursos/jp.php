@@ -5,6 +5,7 @@
   .main-container {
     margin-left: 50px;
     margin-right: 10px;
+    background-color: #ecf0f5;
   }
 
   .main-container-flex {
@@ -21,6 +22,12 @@
     margin-left: 20px;
     margin-right: 20px;
     width: 35%;
+  }
+  img {
+    object-fit: contain;
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
   }
 </style>
 <div class="main-container">
@@ -48,7 +55,6 @@
           <datalist id="languageList">
           </datalist>
 
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
         </form>
       </nav>
 
