@@ -1,7 +1,7 @@
 <?php
     include "../../../include/database.php";
 
-    $result = $mysqli->query("SELECT nombre FROM equipos ORDER BY nombre");
+    $result = $mysqli->query("SELECT DISTINCT modelo, marca FROM equipos ORDER BY marca");
 
     if (!$result) {
         die('Query Failed'. mysqli_error($mysqli));
@@ -10,7 +10,8 @@
     $json = array();
     while($row = mysqli_fetch_array($result)) {
         $json[] = array(
-            'nombre' => $row['nombre']
+            'marca' => $row['marca'],
+            'modelo' => $row['modelo']
         );
     }
     $jsonstring = json_encode($json);
