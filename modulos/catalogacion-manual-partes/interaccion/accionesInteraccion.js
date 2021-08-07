@@ -35,6 +35,10 @@ $(document).ready(function () {
 
     $("#listFiles").on('click', 'button', function (e) {
         let elemento = $(this).text();
+        $("#listFiles > button").each(function (e) { 
+            $(this).removeClass('Selected');
+        })
+        $(this).addClass('Selected');
         let template = `http://localhost/JPMODULAR/dist/img/equipos/tmp/${elemento}`;
         if (!doesFileExist(template)) {
             template = `http://localhost/JPMODULAR/dist/img/equipos/${elemento}`;
@@ -84,7 +88,7 @@ $(document).ready(function () {
         let formabasica = `
         <tr id="${cantidadPoligonos}cont">
         <td style="width: 65px">
-            <div class="control-label input-sm"><input id="${cantidadPoligonos}" type="radio" name="im[active]" value="1" ></div>
+            <div class="control-label input-sm"><input id="${cantidadPoligonos}" type="radio" name="im[active]" value="1" Selected ></div>
         </td>
         <td><select name="im[${cantidadPoligonos}][shape]" class="form-control input-sm">
             <option value="rect">
@@ -103,35 +107,11 @@ $(document).ready(function () {
                 </font>
             </option>
             </select></td>
-        <td><input type="text" name="im[${cantidadPoligonos}][href]" value="" placeholder="Enlace" class="form-control input-sm"></td>
+        <td>
+            <input type="text" name="im[${cantidadPoligonos}][href]" value="" placeholder="Enlace" class="form-control input-sm" list="codList${cantidadPoligonos}" >
+            <datalist id="codList${cantidadPoligonos}"></datalist>
+        </td>
         <td><input type="text" name="im[${cantidadPoligonos}][title]" value="" placeholder="Título" class="form-control input-sm"></td>
-        <td><select name="im[${cantidadPoligonos}][target]" class="form-control input-sm">
-            <option value="">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">---</font>
-                </font>
-            </option>
-            <option value="_blank">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">_blanco</font>
-                </font>
-            </option>
-            <option value="_parent">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">_padre</font>
-                </font>
-            </option>
-            <option value="_self">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">_uno mismo</font>
-                </font>
-            </option>
-            <option value="_top">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">_cima</font>
-                </font>
-            </option>
-            </select></td>
         <td name="btn"><button class="btn btn-default btn-sm remove-row" name="im[${cantidadPoligonos}][remove]" value=""><span class="glyphicon glyphicon-remove"></span></button></td>
         </tr>
         `;
@@ -291,7 +271,35 @@ $(document).ready(function () {
         }
     })
 
+    $("#tbodygeneraMapp").on('keyup', 'input', function(e) {
+        let a = $(this);
+        if ( a.val() ){
+            sugerenciasCodigo(a.val(), $("#modeloEquipos").val(), a)
+        }
+    });
+
 });
+
+function sugerenciasCodigo(cod, mod, elemento){
+    $.ajax({
+        url: 'http://localhost/JPMODULAR/modulos/catalogacion-manual-partes/interaccion/getCodTitle.php',
+        type: 'POST',
+        data: { 
+            search: cod,
+            mod: mod
+         },
+        success: function (resdata) {
+            let codPartes = JSON.parse(resdata);
+            let template = '';
+            codPartes.forEach(parte => {
+                template += `
+                <option value="${parte.codigo_parte}" />
+                `;
+            });
+            elemento.next().html(template);
+        }
+    });
+}
 
 function buscarPartesEquipo(codPart) {
     $.ajax({
@@ -332,10 +340,10 @@ function doesFileExist(urlToFile) {
     xhr.send();
 
     if (xhr.status == "404") {
-        console.log("File doesn't exist");
+        //console.log("File doesn't exist");
         return false;
     } else {
-        console.log("File exists");
+        //console.log("File exists");
         return true;
     }
 }
@@ -355,7 +363,7 @@ function obtenerDataModelo(modelo) {
             });
             $('#modelList').html(template);
         }
-    })
+    });
 }
 
 function obtenerDataModeloParte(modelo) {
@@ -383,20 +391,23 @@ function obtenerImgModelo(modelo) {
         success: function (resdata) {
             let archivs = JSON.parse(resdata);
             let template = '';
+            let templatemap = '';
             archivs.forEach(archi => {
+                templatemap += archi.mapImg;
                 template += `
                 <button type="button" class="list-group-item list-group-item-action" >${archi.archivo}  <i class="text-right fa fa-arrow-right"></i></button>
                 `;
             });
             $('#listFiles').html(template);
         }
-    })
+    });
 }
 
 function obtenerDataImgMap() {
     let src = $("img").attr("src");
-    let ident = src.substring(src.lastIndexOf('/') + 1)
-    let imgdir = 'http://localhost/JPMODULAR/dist/img/equipos/' + ident;
+    let ident = $("button.Selected").text();
+    console.log( $("button.Selected").text() );
+    let imgdir = 'http://localhost/JPMODULAR/dist/img/equipos/' + ident.trim();
     let cordens = [];
     let titulos = [];
     let hrefs = [];
@@ -414,16 +425,42 @@ function obtenerDataImgMap() {
 
     if (cordens.length == titulos.length && titulos.length == hrefs.length) {
         for (let i = 0; i < cordens.length; i++) {
-            templateArea += `<area alt="${titulos[i]}" title="${titulos[i]}" href="${hrefs[i]}" coords="${cordens[i]}" shape="poly">`;
+            templateArea += `<area alt="${titulos[i]}" title="${titulos[i]}" id="${hrefs[i]}" coords="${cordens[i]}" shape="poly">`;
         }
     }
+    let templatemap = '';
+    $.ajax({
+        url: 'http://localhost/JPMODULAR/modulos/catalogacion-manual-partes/interaccion/getMapImg.php',
+        type: 'POST',
+        data: { search: ident.trim() },
+        success: function (resdata) {
+            if (resdata != null && resdata != ''){
+                let archivs = JSON.parse(resdata)
+                templatemap = '';
+                archivs.forEach(archi => {
+                    templatemap += archi.mapImg;
+                });
+                templatemap = templatemap.slice(0,-6);
+                templatemap += templateArea + '</map>';
+            }else{
+                templatemap="esta vacio";
+            }
+            console.log(templatemap);
+            $.post("http://localhost/JPMODULAR/modulos/catalogacion-manual-partes/interaccion/updateMapImg.php", {templatemap,ident},
+                function (resdata) {
+                    console.log(resdata);
+                }
+            );
+        }
+    });
 
     template = `
-    <img src="${imgdir}" usemap="#${ident}">
-    <map name="${ident}">
+    <img src="${imgdir}" usemap="#${ident.trim()}">
+    <map name="${ident.trim()}">
         ${templateArea}
     </map>
     `;
+
 
     return template;
 }

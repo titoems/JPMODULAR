@@ -61,7 +61,7 @@
                            <div class="box-body">
                               <div class="form-group">
                                  <label for="modeloEquipos">Nombre Modelo:</label>
-                                 <input id="modeloEquipos" type="text" class="form-control" placeholder="Selecciona un Modelo" list="modelList">
+                                 <input id="modeloEquipos" name="modeloEquipo" type="text" class="form-control" placeholder="Selecciona un Modelo" list="modelList">
                                  <datalist id="modelList"></datalist>
                               </div>
                               <div class="form-group">
@@ -188,11 +188,6 @@
                                  <th>
                                     <font style="vertical-align: inherit;">
                                        <font style="vertical-align: inherit;">Título</font>
-                                    </font>
-                                 </th>
-                                 <th>
-                                    <font style="vertical-align: inherit;">
-                                       <font style="vertical-align: inherit;">Objetivo</font>
                                     </font>
                                  </th>
                                  <th style="width: 25px"></th>
