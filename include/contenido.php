@@ -56,8 +56,8 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="<?= $_SESSION['pestañaO_Servicio']; ?>"><a href="#ordenServicio" data-toggle="tab">Orden de servicio</a></li>
-              <li class="<?= $_SESSION['pestañaKPI']; ?>"><a href="#kpi" data-toggle="tab">KPI</a></li>
               <li class="<?= $_SESSION['pestañaEquipo']; ?>"><a href="#equipo" data-toggle="tab">Equipo</a></li>
+              <li class="<?= $_SESSION['pestañaKPI']; ?>"><a href="#kpi" data-toggle="tab">KPI</a></li>
             </ul>
             <div class="tab-content">
                 <div class="<?= $_SESSION['pestañaO_Servicio']; ?> tab-pane" id="ordenServicio">

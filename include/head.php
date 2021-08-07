@@ -12,8 +12,11 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= $direccion ?>dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
+        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?= $direccion ?>dist/css/skins/_all-skins.min.css">
+
+  <!-- chart libreria para los graficos KPI -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.js" integrity="sha512-XcsV/45eM/syxTudkE8AoKK1OfxTrlFpOltc9NmHXh3HF+0ZA917G9iG6Fm7B6AzP+UeEzV8pLwnbRNPxdUpfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -171,8 +171,10 @@
             <div class="col-xs-4">
                 <div class="box box-warning">
                     <br>
+                    <br>
+                    <br>
                     <div class="info-box bg-green">
-                        <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
+                        <span class="info-box-icon"><i class="glyphicon glyphicon-time"></i></span>
                         <div class="info-box-content">
                             <center>
                                 <span class="info-box-text">
@@ -183,20 +185,21 @@
                                             echo "Marca/Modelo";
                                         }else{
                                             echo $rowEquipos['marca'] .$Barra. $rowEquipos['modelo'];
-                                        }
+                                            $queryOrometro ="SELECT MAX(fecha),horometro FROM trabajos WHERE codigo_equipo='$rowEquipos[codigo_equipo]'";
+                                            $resultOrometro=mysqli_query($mysqli , $queryOrometro);
+                                            $rowOrometro = mysqli_fetch_array($resultOrometro);
+                                        
                                     ?>
                                     </h4>
                                 </span>
-                                <span class="info-box-number">Horas Totales 92,050</span>
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 20%"></div>
-                                </div>
+                                <span class="info-box-number">Horas totales : <?php echo $rowOrometro['horometro']; ?></span>
+                                <?php }?>
                             </center>
                         </div>
                     </div>
                     <br>
                     <div class="info-box bg-green">
-                        <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
+                        <span class="info-box-icon"><i class="glyphicon glyphicon-calendar"></i></span>
                         <div class="info-box-content">
                             <center>
                                 <span class="info-box-text"><h3>Ultimo Mantenimiento Preventivo</h3></span>
@@ -218,8 +221,9 @@
                     </div>
                     <br>
                     <h3>Estado Sistema</h3>
+                    <br>
                     <div class="info-box <?=$_SESSION['ColorTargetaAire']; ?>">
-                        <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
+                        <span class="info-box-icon"><i class="glyphicon glyphicon-indent-left"></i></span>
                         <div class="info-box-content">
                             <center>
                                 <span class="info-box-text"><h4>Aire Acondicionado</h4></span>
@@ -232,7 +236,7 @@
                         </div>
                     </div>
                     <div class="info-box  <?= $_SESSION['ColorTargeta']; ?>">
-                        <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
+                        <span class="info-box-icon"><i class="glyphicon glyphicon-fire"></i></span>
                         <div class="info-box-content">
                             <center>
                                 <span class="info-box-text"><h4>Calefaccion</h4></span>
