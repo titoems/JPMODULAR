@@ -38,7 +38,11 @@ $(document).ready(function () {
         }
     });
 
-    
+    $("div#divImg").on('click', 'area', function(e) {
+        let a = $(this).attr('id');
+        $(`#${a}`).addClass('show');
+        
+    })
 
     $("select").change(function () {
         let selectId = $(this).attr("id");
@@ -49,7 +53,6 @@ $(document).ready(function () {
         })
         $(`#${selectId} option:selected`).each(function () {
             let elementosS = $(this).val();
-            console.log(elementosS);
 
             if ($('#detallesWraper').text!=='Ningun Elemento Seleccionado'){
                 $(`#${elementosS}`).addClass('show');
@@ -246,9 +249,18 @@ function buscaDetalles(busqueda) {
                     `;
                 }
 
-                temporal = detalle.mapImg;
-                if (templateImagen.indexOf(temporal) == -1) {
-                    templateImagen += `${detalle.mapImg}`;
+                if (detalle.mapImg == null){
+                    temporal = detalle.archivo;
+                    if (templateImagen.indexOf(temporal) == -1) {
+                        templateImagen += `
+                        <img src="http://localhost/JPMODULAR/dist/img/equipos/${detalle.archivo}">
+                        `;
+                    }
+                }else{
+                    temporal = detalle.mapImg;
+                    if (templateImagen.indexOf(temporal) == -1) {
+                        templateImagen += `${detalle.mapImg}`;
+                    }
                 }
 
                 temporal = detalle.nombre;
@@ -353,145 +365,11 @@ function buscaDetalles(busqueda) {
                 if ( $('#divImg').text() == '' ){
                     buscarDetallesOImg(busqueda);
                 }
-                buscaDetallesOMap(busqueda);
             }
         }
     })
 }
 
-function buscaDetallesOMap(busqueda){
-    $.ajax({
-        url: 'http://localhost/JPMODULAR/modulos/catalogacion-manual-partes/js-php/detalles_out_map.php',
-        type: 'POST',
-        data: { search: busqueda },
-        success: function (resdata) {
-            let detalles = JSON.parse(resdata);
-            let template = '';
-            let templateImagen = '';
-            let templateDetalles = '';
-            let temporal = '';
-
-            detalles.forEach(detalle => {
-
-                temporal = detalle.archivo;
-                if (template.indexOf(temporal) == -1) {
-                    template += `
-                    <tr role="row" class="odd">
-                        <td>${detalle.archivo}</td>
-                        <td>${detalle.tipoArchivo}</td>
-                    </tr>
-                    `;
-                }
-
-                temporal = detalle.archivo;
-                if (templateImagen.indexOf(temporal) == -1) {
-                    templateImagen += `
-                    <img src="http://localhost/JPMODULAR/dist/img/equipos/${detalle.archivo}">
-                    `;
-                }
-
-                temporal = detalle.nombre;
-                if (templateDetalles.indexOf(temporal) == -1) {
-                    templateDetalles += `
-                    <div id="accordion">
-                        <div class="card">
-                            <div class="card-header" id="heading${detalle.nombre}">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link" data-toggle="collapse" data-target="#${detalle.nombre}" aria-expanded="true" aria-controls="${detalle.nombre}">
-                                        ${detalle.nombre}
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="${detalle.nombre}" class="collapse" aria-labelledby="heading${detalle.nombre}" data-parent="#accordion">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-                                                <thead>
-                                                    <tr role="row">
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Motor de renderizado: activar para ordenar la columna descendente">
-                                                        <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Informacion</font>
-                                                        </font>
-                                                    </th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Navegador: activar para ordenar la columna de forma ascendente">
-                                                        <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Valor</font>
-                                                        </font>
-                                                    </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr role="row" class="odd">
-                                                        <th>Codigo Equipo</th>
-                                                        <td>${detalle.nombre}</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <th>Estado</th>
-                                                        <td>${detalle.estado}</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <th>Presion Alta</th>
-                                                        <td>${detalle.presion_alta}</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <th>Presion Baja</th>
-                                                        <td>${detalle.presion_baja}</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <th>Frecuencia</th>
-                                                        <td>${detalle.frecuencia}</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <th>Capacidad</th>
-                                                        <td>${detalle.capacidad}</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <th>Refrigerante</th>
-                                                        <td>${detalle.refrigerante}</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <th>Tipo</th>
-                                                        <td>${detalle.tipo}</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <th>Numero de Serie</th>
-                                                        <td>${detalle.numero_serie}</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <th>Voltaje</th>
-                                                        <td>${detalle.voltaje}</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <th>Amperaje</th>
-                                                        <td>${detalle.amperaje}</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <th>Tipo de Equipo</th>
-                                                        <td>${detalle.tipoEquipo}</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <th>Observacion Calefaccion</th>
-                                                        <td>${detalle.observacion}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    `;
-                }
-                
-            })
-            $('#tableArchivos').html(template);
-            $('#detallesWraper').html(templateDetalles);
-            $('#divImg').html(templateImagen);
-        }
-    })
-}
 
 function buscarDetallesOImg(busqueda){
     $.ajax({

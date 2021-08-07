@@ -32,6 +32,10 @@
          margin-right: 0;
          width: 100%;
       }
+
+      area :hover {
+         cursor: move;
+      }
    </style>
 </head>
 
@@ -57,11 +61,11 @@
                            <div class="box-body">
                               <div class="form-group">
                                  <label for="modeloEquipos">Nombre Modelo:</label>
-                                 <input id="modeloequipos" type="text" class="form-control" placeholder="Selecciona un Modelo" list="modelList">
+                                 <input id="modeloEquipos" type="text" class="form-control" placeholder="Selecciona un Modelo" list="modelList">
                                  <datalist id="modelList"></datalist>
                               </div>
                               <div class="form-group">
-                                 <button type="button" class="btn btn-success btn-lg" id="image-mapper-upload">
+                                 <button type="button" class="btn btn-success btn-lg" id="image-mapper-upload" disabled="disabled" >
                                     <font style="vertical-align: inherit;">
                                        <font style="vertical-align: inherit;">Seleccionar Imagen</font>
                                     </font>
@@ -75,7 +79,7 @@
                            </div>
                            <div class="form-group">
 
-                              <button id="showformAddE" type="button" class="btn btn-info" >Añadir Equipo <span class="glyphicon glyphicon-plus-sign"></span></button>
+                              <button id="showformAddE" type="button" class="btn btn-info" disabled="disabled" >Añadir Parte <span class="glyphicon glyphicon-plus-sign"></span></button>
 
                            </div>
                            <div class="form-group">
@@ -84,9 +88,6 @@
 
                               </div>
 
-                           </div>
-                           <div class="box-footer">
-                              <button type="submit" class="btn btn-primary">Guardar</button>
                            </div>
                         </form>
                      </div>
@@ -107,75 +108,61 @@
 
                         <div id="cardEquipo" class="card hide" style="width: 38rem; text-align: center; margin: auto">
                            <div class="card-header">
-                              Nuevo Equipo
+                              <h3 class="box-title">Nuevo Parte</h3>
                            </div>
                            <div class="card-body">
-                              <form>
-                                 <div class="form-group">
-                                    <label for="codigoEquipo" class="col-form-label">Codigo:</label>
-                                    <input type="text" class="form-control" id="codigoEquipo">
+                              <form id="createEquipo">
+                                 <div class="input-group">
+                                    <span class="input-group-addon">Codigo Parte:</span>
+                                    <input id="codParte" type="text" class="form-control">
                                  </div>
-                                 <div class="form-group">
-                                    <label for="marcaEquipo" class="col-form-label">Marca:</label>
-                                    <input type="text" class="form-control" id="marcaEquipo">
+                                 <br>
+                                 <div class="input-group">
+                                    <span class="input-group-addon">Nombre:</span>
+                                    <input id="nombreParte" type="text" class="form-control">
                                  </div>
-                                 <div class="form-group">
-                                    <label for="clienteEquipo" class="col-form-label">Cliente:</label>
-                                    <input type="text" class="form-control" id="clienteEquipo">
+                                 <br>
+                                 <div class="input-group">
+                                    <span class="input-group-addon">Titulo Segmento:</span>
+                                    <input id="tituloSeg" type="text" class="form-control">
                                  </div>
-
-                                 Estado:
-                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="estadoRadioB" id="estOperativo" value="Operativo" checked>
-                                    <label class="form-check-label" for="estOperativo">Operativo</label>
+                                 <br>
+                                 <div class="input-group">
+                                    <span class="input-group-addon">Codigo SAP:</span>
+                                    <input id="codSap" type="text" class="form-control">
                                  </div>
-                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="estadoRadioB" id="estInoperativo" value="Inoperativo">
-                                    <label class="form-check-label" for="estInoperativo">Inoperativo</label>
+                                 <br>
+                                 <div class="box">
+                                    <div class="box-header">
+                                       <h3 class="box-title">Ficha Tecnica</h3>
+                                       <div class="pull-right box-tools">
+                                          <button id="addInfParte" type="button" class="btn btn-info btn-sm">
+                                             <i class="fa fa-plus"></i>
+                                          </button>
+                                          <button id="removeInfParte" type="button" class="btn btn-danger btn-sm">
+                                             <i class="fa fa-minus"></i>
+                                          </button>
+                                       </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body no-padding">
+                                       <table class="table table-striped">
+                                          <thead>
+                                             <tr>
+                                                <th style="width: 10px">#</th>
+                                                <th>Titulo</th>
+                                                <th>Informacion</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody id="nuevoDato">
+                                          </tbody>
+                                       </table>
+                                    </div>
+                                    <!-- /.box-body -->
                                  </div>
-
-                                 <div class="form-group">
-                                    <label for="presionAEquipo" class="col-form-label">Presion Alta:</label>
-                                    <input type="number" class="form-control" id="presionAEquipo">
+                                 <div class="box-footer">
+                                    <button class="btn btn-success">Crear Parte</button>
                                  </div>
-                                 <div class="form-group">
-                                    <label for="presionBEquipo" class="col-form-label">Presion Baja:</label>
-                                    <input type="number" class="form-control" id="presionBEquipo">
-                                 </div>
-                                 <div class="form-group">
-                                    <label for="frecuenciaEquipo" class="col-form-label">Frecuencia:</label>
-                                    <input type="number" class="form-control" id="frecuenciaEquipo">
-                                 </div>
-                                 <div class="form-group">
-                                    <label for="capacidadEquipo" class="col-form-label">Capacidad:</label>
-                                    <input type="number" class="form-control" id="capacidadEquipo">
-                                 </div>
-
-                                 <div class="form-group">
-                                    <label for="refrigeranteEquipo" class="col-form-label">Refrigerante:</label>
-                                    <input type="text" class="form-control" id="refrigeranteEquipo">
-                                 </div>
-                                 <div class="form-group">
-                                    <label for="tipoOnly" class="col-form-label">Tipo:</label>
-                                    <input type="text" class="form-control" id="tipoOnly">
-                                 </div>
-                                 <div class="form-group">
-                                    <label for="numSerieEquipo" class="col-form-label">Numero de Serie:</label>
-                                    <input type="text" class="form-control" id="numSerieEquipo">
-                                 </div>
-                                 <div class="form-group">
-                                    <label for="voltajeEquipo" class="col-form-label">Voltaje:</label>
-                                    <input type="number" class="form-control" id="voltajeEquipo">
-                                 </div>
-                                 <div class="form-group">
-                                    <label for="amperajeEquipo" class="col-form-label">Amperaje:</label>
-                                    <input type="number" class="form-control" id="amperajeEquipo">
-                                 </div>
-                                 <div class="form-group">
-                                    <label for="tipoEquipo" class="col-form-label">Tipo Equipo:</label>
-                                    <input type="text" class="form-control" id="tipoEquipo">
-                                 </div>
-                                 <button id="createEquipo" class="btn btn-success" >Crear Equipo</button>
                               </form>
                            </div>
                         </div>
@@ -211,59 +198,8 @@
                                  <th style="width: 25px"></th>
                               </tr>
                            </thead>
-                           <tbody>
-                              <tr id="0cont">
-                                 <td style="width: 65px">
-                                    <div class="control-label input-sm"><input id="0" type="radio" name="im[active]" value="1" checked="checked"></div>
-                                 </td>
-                                 <td><select name="im[0][shape]" class="form-control input-sm">
-                                       <option value="rect">
-                                          <font style="vertical-align: inherit;">
-                                             <font style="vertical-align: inherit;">Rect</font>
-                                          </font>
-                                       </option>
-                                       <option value="poly" selected>
-                                          <font style="vertical-align: inherit;">
-                                             <font style="vertical-align: inherit;">Poly</font>
-                                          </font>
-                                       </option>
-                                       <option value="circle">
-                                          <font style="vertical-align: inherit;">
-                                             <font style="vertical-align: inherit;">Circulo</font>
-                                          </font>
-                                       </option>
-                                    </select></td>
-                                 <td><input type="text" name="im[0][href]" value="" placeholder="Enlace" class="form-control input-sm"></td>
-                                 <td><input type="text" name="im[0][title]" value="" placeholder="Título" class="form-control input-sm"></td>
-                                 <td><select name="im[0][target]" class="form-control input-sm">
-                                       <option value="">
-                                          <font style="vertical-align: inherit;">
-                                             <font style="vertical-align: inherit;">---</font>
-                                          </font>
-                                       </option>
-                                       <option value="_blank">
-                                          <font style="vertical-align: inherit;">
-                                             <font style="vertical-align: inherit;">_blanco</font>
-                                          </font>
-                                       </option>
-                                       <option value="_parent">
-                                          <font style="vertical-align: inherit;">
-                                             <font style="vertical-align: inherit;">_padre</font>
-                                          </font>
-                                       </option>
-                                       <option value="_self">
-                                          <font style="vertical-align: inherit;">
-                                             <font style="vertical-align: inherit;">_uno mismo</font>
-                                          </font>
-                                       </option>
-                                       <option value="_top">
-                                          <font style="vertical-align: inherit;">
-                                             <font style="vertical-align: inherit;">_cima</font>
-                                          </font>
-                                       </option>
-                                    </select></td>
-                                 <td name="btn"><button class="btn btn-default btn-sm remove-row" name="im[0][remove]" value=""><span class="glyphicon glyphicon-remove"></span></button></td>
-                              </tr>
+                           <tbody id="tbodygeneraMapp">
+                              
                            </tbody>
                            <tfoot>
                               <tr>
@@ -285,7 +221,7 @@
                            </tfoot>
                         </table>
                         <div class="box-footer">
-                           
+
                         </div>
                      </div>
                   </div>
