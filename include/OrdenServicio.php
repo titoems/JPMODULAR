@@ -41,14 +41,6 @@
                                                 echo $rowCliente['descripcion'];
                                             ?>
                                         </td>
-                                        <!-- <td>
-                                            <?php 
-                                                // $queryAccion ="SELECT nombre FROM accion WHERE id=$row[id_acciones]";
-                                                // $result_o_servicio_Accion= mysqli_query($mysqli , $queryAccion);
-                                                // $rowAccion = mysqli_fetch_array($result_o_servicio_Accion);
-                                                // echo $rowAccion['nombre'];
-                                            ?>
-                                        </td> -->
                                         <td>
                                                 <?php 
                                                 $queryEquipo ="SELECT modelo FROM equipos WHERE id=$row[codigo_equipo]";
@@ -57,20 +49,6 @@
                                                 echo $rowEquipo['modelo']; 
                                                 ?>
                                         </td>
-                                        <!-- <td>
-                                            <?php 
-                                                // $queryEquipoEstado ="SELECT estado FROM equipos WHERE id=$row[codigo_equipo]";
-                                                // $result_o_servicio_EquipoEstado= mysqli_query($mysqli , $queryEquipoEstado);
-                                                // $rowEquipoEstado = mysqli_fetch_array($result_o_servicio_EquipoEstado);
-                                            ?>
-                                            <?php //if($rowEquipoEstado['estado']=="Operativo"){?>
-                                            <span class="label label-success"><?php //echo $rowEquipoEstado['estado'];  ?></span>
-                                            <?php //}elseif($rowEquipoEstado['estado']=="Inoperativo"){?>
-                                            <span class="label label-danger"><?php //echo $rowEquipoEstado['estado'];  ?></span>
-                                            <?php //}elseif($rowEquipoEstado['estado']=="Observacion"){?>
-                                            <span class="label label-warning"><?php //echo $rowEquipoEstado['estado'];  ?></span>
-                                            <?php //} ?>
-                                        </td> -->
                                         <td>
                                             <button type="button" class="btn btn-block btn-info">Ver</button>
                                         </td>
@@ -101,10 +79,10 @@
                             var myChartOS = new Chart(ctxOS,{
                                 type: 'bar',
                                 data: {
-                                    labels: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+                                    labels: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],//aqui es donde iran los datos de las consultas
                                     datasets: [{
                                         label: 'Trabajos anteriores',
-                                        data: [12, 19, 3, 5, 2, 3],
+                                        data: [12, 19, 3, 5, 2, 3],//aqui es donde iran los datos de las consultas
                                         backgroundColor: [
                                             'rgba(255, 99, 132)',
                                             'rgba(54, 162, 235)',
